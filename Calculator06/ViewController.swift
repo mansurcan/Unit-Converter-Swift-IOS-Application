@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     //Segmented Control for Image Sections
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -81,6 +81,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.textfield01.resignFirstResponder()
 
         segmentedControl.selectedSegmentIndex = defaults.integer(forKey: "current_conversion")
         let title:String = segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex)!
@@ -88,14 +89,22 @@ class ViewController: UIViewController {
         conversion = title.lowercased()
         SetupConversionEnvironment(conversion: conversion)
         DisplayUserDefaults()
-        view.endEditing(false)
+        //view.endEditing(true)
         
     }
     
     //Hide the keyboard
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        return false
-    }
+
+//    func textFieldShouldReturn(userText: UITextField!) -> Bool {
+//        textfield01.resignFirstResponder()
+//        return true;
+//    }
+//
+//    private func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        self.setEditing(false, animated: false)
+//        return false
+//    }
     
     //All the number buttons
     @IBAction func didPressNumber(_ sender: UIButton) {

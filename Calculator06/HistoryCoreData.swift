@@ -98,6 +98,7 @@ class HistoryCoreData
     {
         var count:Int = 0
         
+        //let appDelegate = UIApplication.shared.delegate
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         _ = NSEntityDescription.entity(forEntityName: "History", in: context)
